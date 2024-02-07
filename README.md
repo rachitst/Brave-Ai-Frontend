@@ -1,70 +1,87 @@
-# Getting Started with Create React App
+# Setting Up and Running the MERN Stack Application
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+This document provides clear and concise instructions for setting up and running the MERN stack application developed by [Your Name/Your Team].
 
-## Available Scripts
+## Prerequisites
 
-In the project directory, you can run:
+Before proceeding with the setup, ensure that you have the following prerequisites installed on your system:
 
-### `npm start`
+- Node.js and npm (Node Package Manager)
+- MongoDB
+- Git (optional, for cloning the repository)
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+## Installation Steps
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+1. **Clone the Repository (If not already done)**
 
-### `npm test`
+   ```bash
+   git clone <repository-url>
+   cd <repository-folder>
+   ```
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+2. **Install Dependencies**
 
-### `npm run build`
+   ```bash
+   cd client && npm install
+   cd ../server && npm install
+   ```
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+3. **Configuration**
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+   - In the `server` folder, create a `.env` file and provide necessary configurations like MongoDB URI, JWT secret, etc.
+   - Example `.env` file:
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+     ```plaintext
+     MONGODB_URI=your_mongodb_uri
+     JWT_SECRET=your_jwt_secret
+     ```
 
-### `npm run eject`
+4. **Database Setup**
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+   Ensure MongoDB is running locally or provide the appropriate MongoDB URI in your `.env` file.
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+5. **Start the Server**
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+   ```bash
+   cd server && npm start
+   ```
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+6. **Start the Client**
 
-## Learn More
+   Open a new terminal and navigate to the `client` folder:
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+   ```bash
+   cd client && npm start
+   ```
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+7. **Access the Application**
 
-### Code Splitting
+   Once the server and client are successfully running, you can access the application by navigating to `http://localhost:3000` in your web browser.
+   The application uses MongoDB as its database. Below is the schema for the main collections:
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+### Teacher
 
-### Analyzing the Bundle Size
+- **_id**: ObjectId (automatically generated)
+- **Name**: String
+- **email**: String
+- **Subject**: String
+- **password**: String (hashed)
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+### Student
 
-### Making a Progressive Web App
+- **_id**: ObjectId (automatically generated)
+- **Name**: String
+- **email**: String
+- **Grade**: String
+- **password**: String (hashed)
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+## Additional Information
 
-### Advanced Configuration
+- The server runs on port `5000` by default, and the client runs on port `3000`. Ensure these ports are not in use.
+- You may need to configure CORS settings in the server if the client is hosted on a different domain.
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
+## Troubleshooting
 
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+- If you encounter any issues during setup or while running the application, refer to the error messages in the terminal for guidance.
+- Ensure all dependencies are installed correctly by running `npm install` in both the `client` and `server` directories.
+- Double-check the MongoDB URI and other configurations in the `.env` file.
